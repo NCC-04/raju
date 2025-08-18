@@ -30,7 +30,7 @@ def predict_image():
         img = cv2.imdecode(npimg, cv2.IMREAD_COLOR)
 
         # YOLO detection
-        results = model(img)
+        results = model(img,imgsz=320)
         result = results[0]  # first image
         boxes = result.boxes  # Boxes object
         detections = []
@@ -73,4 +73,5 @@ def predict_image():
 if __name__ == "__main__":
  port = int(os.environ.get("PORT", 10000))
  app.run(host="0.0.0.0", port=port)  
+
 
